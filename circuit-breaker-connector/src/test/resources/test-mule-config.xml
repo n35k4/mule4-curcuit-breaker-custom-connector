@@ -1,0 +1,19 @@
+<mule xmlns="http://www.mulesoft.org/schema/mule/core"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:circuitbreaker="http://www.mulesoft.org/schema/mule/circuitbreaker"
+      xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+          http://www.mulesoft.org/schema/mule/circuitbreaker http://www.mulesoft.org/schema/mule/circuitbreaker/current/mule-circuitbreaker.xsd">
+
+    <circuitbreaker:config name="config" configId="configId">
+        <circuitbreaker:connection requiredParameter="aValue" />
+    </circuitbreaker:config>
+
+    <flow name="sayHiFlow">
+        <circuitbreaker:say-hi person="Mariano Gonzalez"/>
+    </flow>
+
+    <flow name="retrieveInfoFlow">
+        <circuitbreaker:retrieve-info config-ref="config"/>
+    </flow>
+
+</mule>
